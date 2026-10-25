@@ -1,14 +1,16 @@
-# OSTF Narration Generator / JA Male
+# OSTF Narration Generator
 
-**Japanese Text-to-Speech Narration for Ableton Live**
+**Multilingual Text-to-Speech Narration for Ableton Live**
 
-OSTF Narration Generator / JA Male is a Max for Live Audio Effect that generates Japanese narration from text or lyrics imported from Open Song Timeline Format (OSTF).
+OSTF Narration Generator is a Max for Live Audio Effect that generates spoken narration from text or lyrics imported from Open Song Timeline Format (OSTF).
 
-Unlike the experimental OSTF Vocal Generator, which synthesizes singing voices from phonetic samples, this device uses the **Windows Japanese text-to-speech (TTS) system** to generate spoken narration.
+The device uses the **operating system's built-in text-to-speech (TTS) capabilities**, automatically selecting the appropriate speech synthesis backend for Windows or macOS.
 
-It is designed for voiceovers, spoken-word production, narration, music introductions, and other audio projects requiring Japanese speech inside Ableton Live.
+Unlike the experimental OSTF Vocal Generator, which synthesizes singing voices from phonetic samples, OSTF Narration Generator is dedicated to spoken narration.
 
-The device demonstrates how OSTF can be used beyond conventional music playback, connecting structured song information with speech synthesis and DAW audio workflows.
+It supports multiple languages, male and female voices, adjustable speaking speed, target-duration control, DAW synchronization, audio recording, WAV export, and audio clip writing.
+
+**Important: Available languages, voices, pronunciation quality, and synthesis capabilities depend on the operating system and the speech voices installed on the user's computer.**
 
 ## About Open Song Timeline Format (OSTF)
 
@@ -18,13 +20,21 @@ Its central philosophy is:
 
 **Music data should be independent of the applications that interpret it.**
 
-OSTF supports the exchange of structured musical information, including song metadata, sections, tempo, time signatures, chords, melodies, lyrics, pronunciation information, and arrangement data, depending on the format version.
+Depending on the format version, OSTF can represent:
 
-This allows different applications to use the same song information for different purposes.
+- Song metadata and musical structure
+- Tempo, time signatures, and timeline positions
+- Chord progressions
+- Melody and note information
+- Lyrics and pronunciation information
+- Arrangement information
+- Application-specific extensions
 
-For example, OSTF lyrics can be interpreted by a singing synthesizer, narration generator, lyric editor, or other text-based audio application.
+OSTF allows different applications to interpret the information relevant to their purposes.
 
-OSTF Narration Generator demonstrates this flexibility by interpreting song lyrics as spoken Japanese rather than singing them according to melody notes.
+For example, the same OSTF song information may be used by a chord editor, lyric editor, vocal synthesizer, narration generator, or other music application.
+
+OSTF Narration Generator demonstrates this flexibility by interpreting song lyrics as spoken narration rather than singing them according to melody notes.
 
 **Open Song Timeline Format 3.0:**
 
@@ -32,31 +42,69 @@ https://github.com/yoh-nak/Open-Song-Timeline-Format-3.0
 
 ## Main Features
 
-### Japanese Text-to-Speech
+### Multilingual Text-to-Speech
 
-- Japanese narration using Windows TTS
-- Japanese male voice selection through the installed TTS system
-- Direct input of Japanese text
-- Support for Japanese text containing kanji, hiragana, and katakana
+- Text-to-speech narration using operating system speech engines
+- Automatic Windows / macOS detection
+- Automatic selection of the corresponding TTS backend
+- Language selection based on installed voices
+- Male, female, and other available voice classifications
+- Individual voice selection
+- Automatic voice discovery and rescan
+- Direct text input and editing
 - Optional pronunciation corrections
-- Text-based narration without MIDI melody notes
-- Automatic audio generation before playback
+- Support for languages and writing systems handled by the selected TTS engine
+- Automatic speech generation before playback
+
+The device does not include a fixed list of supported languages or a large internal voice library.
+
+Instead, it discovers the speech voices available through the operating system.
+
+### Voice Selection
+
+The device provides the following settings:
+
+**LANGUAGE**
+
+Select the language or locale of the narration voice.
+
+**GENDER**
+
+Filter available voices by their reported gender.
+
+**VOICE**
+
+Select a specific installed voice or use automatic selection within the requested language and gender.
+
+**RESCAN**
+
+Refresh the available voice list after installing or removing operating system speech voices.
+
+Voice information is obtained from the operating system.
+
+A voice with unknown gender is not automatically classified as male or female.
+
+If the requested language, gender, or voice is unavailable, the device reports an error and stops speech generation rather than silently switching to an unrelated voice.
 
 ### OSTF Integration
 
 - Import lyrics from compatible OSTF song files
-- Use OSTF lyrics as narration text
+- Use imported lyrics as narration text
 - Interpret available pronunciation information
-- Narrate song lyrics without following their original melody
+- Narrate lyrics without requiring melody notes
 - Preserve the original OSTF file without modification
+
+The device uses OSTF as a source of structured song and lyric information, not as a singing synthesis engine.
 
 ### Narration Timing
 
-- Adjustable narration playback speed
+- Adjustable narration speaking speed
 - Target-duration adjustment with FIT TOTAL
 - Automatic recalculation of narration length
-- Timing adjustment without intentionally truncating the text
+- Timing adjustments without intentionally truncating the text
 - Playback duration display
+
+Actual timing depends on the selected voice and operating system synthesis engine.
 
 ### Ableton Live Integration
 
@@ -74,118 +122,192 @@ https://github.com/yoh-nak/Open-Song-Timeline-Format-3.0
 
 ### Basic Text Narration
 
-1. Place the device on an audio track in Ableton Live.
-2. Enter or paste Japanese text into the TEXT area.
-3. Use READING if pronunciation correction is required.
-4. Adjust the narration speed or target duration.
-5. Click PLAY to generate and play the narration.
-6. The generated narration is recorded and displayed as a waveform.
-7. Click EXPORT WAV to save the recorded audio.
-8. Alternatively, click WRITE CLIP to place the recording on the same audio track.
-9. Use CLEAR to remove the current recording.
+1. Place the device on a regular audio track in Ableton Live.
+2. Select the desired LANGUAGE.
+3. Select the GENDER and VOICE.
+4. Enter or paste text into the TEXT area.
+5. Use READING if pronunciation corrections are required.
+6. Adjust the speaking speed or target duration.
+7. Click PLAY to generate and play the narration.
+8. The playback output is recorded and displayed as a waveform.
+9. Click EXPORT WAV to save the recording.
+10. Alternatively, click WRITE CLIP to place the recording on the same audio track.
+11. Use CLEAR to remove the current recording.
 
 ### Narrating Lyrics from OSTF
 
-1. Click LOAD OSTF.
-2. Select a compatible OSTF song file.
-3. The device extracts available lyrics and pronunciation information.
-4. Edit the narration text or reading if necessary.
-5. Adjust playback speed and timing.
-6. Click PLAY to generate spoken narration.
+1. Select the desired narration language and voice.
+2. Click LOAD OSTF.
+3. Select a compatible OSTF song file.
+4. The device extracts available lyrics and pronunciation information.
+5. Edit the narration text or reading if necessary.
+6. Adjust the speed and timing.
+7. Click PLAY to generate spoken narration.
 
-Unlike a singing synthesizer, this device does not require the original song melody to read the lyrics aloud.
+Unlike a singing synthesizer, the device does not require the original song melody to read lyrics aloud.
 
 ### Speed and Target Duration
 
-The device provides two approaches to controlling narration length.
-
 **SPEED**
 
-Adjust the speaking speed of the narration.
+Adjust the speaking speed using the selected operating system speech engine.
 
 **FIT TOTAL**
 
-Specify a target duration in seconds.
+Specify a target narration duration in seconds.
 
-The device attempts to adjust the narration speed to fit the requested duration.
+The device attempts to adjust the speaking speed to match the requested duration.
 
-When the requested duration cannot be achieved within the supported speed range, the device may report a limitation or use additional silence rather than truncate the narration.
+If the requested duration cannot be achieved within the available speed range, it may report a limitation or use additional silence rather than truncate the narration.
+
+Different voices and operating systems may produce different durations, even when using the same speed setting.
+
+## Operating System Dependencies
+
+**OSTF Narration Generator relies on speech synthesis capabilities provided by the host operating system.**
+
+It does not bundle its own multilingual speech models.
+
+This design keeps the device relatively lightweight and allows it to take advantage of speech voices already installed on the computer.
+
+However, it also means that narration capabilities are determined by the operating system.
+
+### Windows
+
+On Windows, the device uses available Windows speech synthesis interfaces.
+
+The available languages, voices, and voice characteristics depend on the installed Windows TTS voices.
+
+A Japanese Windows display language is not required to generate Japanese narration, provided that a compatible Japanese TTS voice is installed and accessible.
+
+Similarly, English or other language narration requires a corresponding compatible voice.
+
+Not every voice listed in Windows accessibility or Narrator settings is necessarily available through the speech interfaces used by this device.
+
+### macOS
+
+On macOS, the device uses available macOS speech synthesis capabilities.
+
+Available narration languages and voices depend on the speech voices installed and accessible on that Mac.
+
+Additional voices may be available through macOS speech or accessibility settings.
+
+The voice selection and audio generation behavior may differ from Windows.
+
+**macOS support has been implemented but has not yet been verified on a physical Mac with Ableton Live. Community testing is welcome.**
+
+### Voice Availability
+
+The device automatically detects the operating system and discovers available voices.
+
+However:
+
+- OS display language does not determine the only supported narration language.
+- A compatible speech voice must be installed for the selected language.
+- Male and female voices may not exist for every language.
+- Gender information may be unavailable for certain voices.
+- The same voice models are not necessarily available on Windows and macOS.
+- Speech quality, pronunciation, and timing may differ between operating systems.
+- Some OS-level premium or natural voices may not be accessible through the APIs used by the device.
+
+**If a selected voice is unavailable, the device stops generation and displays an error instead of silently choosing another language or gender.**
+
+### Performance
+
+The device does not need to load a large bundled voice bank.
+
+Speech generation is performed using the selected operating system TTS engine.
+
+Once generated, audio can be played and recorded through the device's existing audio workflow.
+
+However, speech generation is not computationally free.
+
+Long text, repeated target-duration calculations, or more advanced operating system voices may require additional processing time or memory.
 
 ## Audio Export and Clip Writing
 
 **EXPORT WAV** saves the recorded narration as a WAV audio file.
 
-**WRITE CLIP** automatically saves the recording internally and attempts to create an Arrangement audio clip on the same audio track containing the device.
+**WRITE CLIP** automatically saves the recording internally and creates an Arrangement audio clip on the same audio track containing the device.
 
-**CLEAR** removes the current recording buffer without intentionally deleting previously exported audio files or created clips.
+**CLEAR** removes the current recording buffer without intentionally deleting previously exported WAV files or created clips.
 
-The device is intended for use on a regular audio track rather than a MIDI track.
+The device is designed for use on a regular audio track, not a MIDI track.
 
 ## Technical Approach
 
-This device uses the Japanese speech synthesis functionality available through Windows.
+OSTF Narration Generator uses a platform-dependent speech synthesis backend.
 
-Unlike sample-based singing synthesis, narration is generated from text using the installed TTS voice and its pronunciation processing.
+**Windows:** Windows speech synthesis interfaces.
 
-This approach eliminates the need to embed a large Japanese singing voice sample bank inside the Max for Live device.
+**macOS:** macOS speech synthesis interfaces.
 
-It also allows the TTS engine to interpret Japanese sentences, including many kanji expressions, rather than requiring every syllable to be manually assembled.
+Node for Max coordinates operating system detection, voice discovery, text-to-speech generation, and communication with the Max for Live device.
 
-The implementation uses Node for Max to coordinate speech generation with the device's playback, recording, and export workflows.
+The generated audio is then handled by the shared playback, recording, waveform, and export workflow.
+
+This approach separates the speech synthesis engine from the musical timeline and DAW integration.
+
+It also avoids embedding separate voice sample libraries for every language and gender.
 
 ## Requirements
 
 - Ableton Live with Max for Live support
-- Windows
-- A compatible Windows Japanese male TTS voice
+- Windows or macOS
 - A functioning Node for Max environment
+- At least one compatible operating system TTS voice
+- A compatible speech voice for the selected language and gender
 
-The device relies on locally available Windows speech synthesis capabilities.
+An external cloud speech synthesis subscription is not required for the intended local workflow.
 
-Voice availability, pronunciation, synthesis quality, and compatibility may vary depending on the Windows installation and installed speech voices.
-
-An external cloud speech synthesis account is not required for the intended local workflow.
+**The device's audio generation capabilities depend on the operating system and installed speech voices.**
 
 ## Limitations
 
-This is an early reference implementation of OSTF-based narration generation.
+OSTF Narration Generator is a reference implementation of OSTF-based narration technology.
 
 Known limitations include:
 
-- Windows-specific speech synthesis dependencies
-- Voice quality determined by available Windows TTS voices
-- Possible pronunciation errors for uncommon names or specialized terminology
-- Limited emotional expression and voice customization
-- Target-duration accuracy dependent on the TTS engine
+- Platform-dependent TTS voices and speech quality
+- Different voice availability on Windows and macOS
+- No guarantee of identical narration output across operating systems
+- Possible pronunciation errors for names or specialized terminology
+- Voice gender information may be missing or incomplete
+- Limited emotional expression compared with advanced neural TTS systems
+- Target-duration accuracy depending on the selected speech engine
 - Limited synchronization with complex tempo and time-signature automation
-- Compatibility dependent on the structure of imported OSTF files
+- Compatibility depending on the structure of imported OSTF files
+- macOS implementation awaiting real-world testing
 
-The device is not intended to replace professional narration recording or advanced neural text-to-speech systems.
+The device is not a speech translation tool.
+
+Selecting a language changes the narration voice; it does not translate the original text into that language.
 
 It is also not a singing synthesizer.
 
 ## For Developers and the Community
 
-This project is shared as an example of how OSTF can be used with text-to-speech technology and Ableton Live.
+This project demonstrates how OSTF can be combined with operating system text-to-speech technology and Ableton Live.
 
-Developers are encouraged to explore alternative narration engines and extend the concept.
+Developers are encouraged to explore alternative speech synthesis engines and extend the concept.
 
 Possible improvements include:
 
-- More natural Japanese neural TTS
-- Improved Japanese pronunciation and accent analysis
-- Multiple speakers and voice styles
-- Emotional narration controls
+- More natural neural TTS
+- Additional voice providers
+- Improved pronunciation and accent processing
+- More expressive voice styles
+- Multiple speakers within a single narration
 - More accurate target-duration adjustment
-- Sentence-level timeline editing
-- Advanced synchronization with Ableton Live
-- Cross-platform speech synthesis
-- Multilingual narration
-- Standalone OSTF-based narration software
+- Advanced narration timeline editing
+- Improved DAW synchronization
+- Cross-platform compatibility testing
+- More consistent voice behavior across operating systems
+- Standalone OSTF-based narration applications
 
-The goal is not necessarily to extend this particular Max for Live device.
+The goal is not necessarily to extend this exact Max for Live device.
 
-Developers are also encouraged to create independent applications using OSTF as a common format for musical timelines, lyrics, speech, and related information.
+Independent applications using OSTF as a common format for musical timelines, lyrics, and speech are also welcome.
 
 Any reuse or redistribution should follow the applicable software and dependency licenses.
 
@@ -193,23 +315,24 @@ Any reuse or redistribution should follow the applicable software and dependency
 
 OSTF is a data format, not a speech synthesis engine.
 
-This project demonstrates one possible interpretation of OSTF lyrics using Japanese text-to-speech technology.
+OSTF Narration Generator demonstrates one possible use of structured OSTF lyrics with operating system speech synthesis technology.
 
-By separating structured song information from the application that processes it, OSTF can support many different kinds of creative software.
+By separating musical data from the application that processes it, OSTF can support a variety of creative workflows.
 
-A song's lyrics might be sung by one application, narrated by another, and edited by a third, without requiring each application to use the same synthesis engine.
+The same song information may be edited in one application, sung by another, and narrated by a third.
 
-This interoperability and extensibility are central to the OSTF concept.
+This independence and interoperability are central to the OSTF concept.
 
 ## Project Information
 
-- **Version:** 1.0
-- **Status:** Initial Release / Reference Implementation
-- **Platform:** Ableton Live / Max for Live / Windows
+- **Version:** 2.0
+- **Status:** Multilingual Reference Implementation
+- **Platform:** Ableton Live / Max for Live / Windows / macOS
 - **Device Type:** Max Audio Effect
-- **Language:** Japanese
-- **Voice:** Windows Japanese Male TTS
-- **Primary Functions:** Text-to-Speech, OSTF Lyric Narration, Recording, WAV Export, Audio Clip Writing
+- **Languages:** Determined by installed operating system TTS voices
+- **Voices:** Selected from available system voices
+- **Speech Engine:** Automatically selected according to the operating system
+- **macOS Testing:** Implementation available; real-world validation pending
 
 ## Links
 
@@ -223,4 +346,4 @@ https://github.com/yoh-nak
 
 ---
 
-*An OSTF-based Japanese narration experiment connecting text-to-speech technology with music production workflows in Ableton Live.*
+*An OSTF-based multilingual narration experiment connecting operating system speech synthesis with music production workflows in Ableton Live.*
